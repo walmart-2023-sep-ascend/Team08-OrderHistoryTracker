@@ -1,0 +1,145 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend-container
+        image: nelsonprabhu/react-docker:1.0.1-dev
+        ports:
+        - containerPort: 3000
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+spec:
+  selector:
+    app: frontend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
+  type: LoadBalancer
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ordernotification-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ordernotification
+  template:
+    metadata:
+      labels:
+        app: ordernotification
+    spec:
+      containers:
+      - name: ordernotification-container
+        image: shyam1224/ordernotification_dev
+        ports:
+        - containerPort: 9704
+        env:
+        - name: MONGODB_URI
+          value: "mongodb+srv://Team08order:28XaPk0L9eeVUijP@cluster0.8thvfms.mongodb.net/test"
+        - name: SENDER_EMAIL
+          value: "haishyamsundar@gmail.com"
+        - name: SENDER_PASSWORD
+          value: "xlohdwtrgixsdudv"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ordernotification-service
+spec:
+  selector:
+    app: ordernotification
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 9704
+  type: LoadBalancer
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ordertracker-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ordertracker
+  template:
+    metadata:
+      labels:
+        app: ordertracker
+    spec:
+      containers:
+      - name: ordertracker-container
+        image: anarayanan38/order-tracker
+        ports:
+        - containerPort: 9703
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ordertracker-service
+spec:
+  selector:
+    app: ordertracker
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 9703
+  type: LoadBalancer
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: orderhistory-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: orderhistory
+  template:
+    metadata:
+      labels:
+        app: orderhistory
+    spec:
+      containers:
+      - name: orderhistory-container
+        image: sathishkph/order-history-tracker:latest
+        ports:
+        - containerPort: 9700
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: orderhistory-service
+spec:
+  selector:
+    app: orderhistory
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 9700
+  type: LoadBalancer

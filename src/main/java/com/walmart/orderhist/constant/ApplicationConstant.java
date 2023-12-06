@@ -14,6 +14,6 @@ public class ApplicationConstant {
 
 	public static final String ORDER_EXCEPTION = "Order Exception: ";
 	
-	public static final String INVALID_CART_EXCEPTION  = "Cart ID mismatch between cart and order";
+	public static final String INVALID_CART_EXCEPTION  = "Cart ID mismatch between cart and order ";
 
 }
