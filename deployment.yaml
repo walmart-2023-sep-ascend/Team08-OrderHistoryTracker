@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: frontend-container
-        image: nelsonprabhu/react-docker:1.0.1-dev
+        image: sathishkph/frontend-app:latest
         ports:
         - containerPort: 3000
 
