@@ -17,12 +17,12 @@ public class ApplicationExceptionHandler {
 
 	@ExceptionHandler(OrderNotFoundException.class)
 	public ResponseEntity<String> handleOrderNotFoundException(OrderNotFoundException e) {
-		return new ResponseEntity<>(ApplicationConstant.ORDER_EXCEPTION + e.getMessage(), HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<>(ApplicationConstant.ORDER_EXCEPTION + e.getMessage(), HttpStatus.NOT_FOUND);
 	}
 
 	@ExceptionHandler(CartNotFoundException.class)
 	public ResponseEntity<String> handleCartNotFoundException(CartNotFoundException e) {
-		return new ResponseEntity<>(ApplicationConstant.CART_EXCEPTION + e.getMessage(), HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<>(ApplicationConstant.CART_EXCEPTION + e.getMessage(), HttpStatus.NOT_FOUND);
 	}
 
 	@ExceptionHandler(OrderServiceException.class)
@@ -37,7 +37,7 @@ public class ApplicationExceptionHandler {
 
 	@ExceptionHandler(InvalidCartException.class)
 	public ResponseEntity<String> handleInvalidCartException(InvalidCartException e) {
-		return new ResponseEntity<>(ApplicationConstant.INVALID_CART_EXCEPTION + e.getMessage(), HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<>(ApplicationConstant.INVALID_CART_EXCEPTION + e.getMessage(), HttpStatus.NOT_FOUND);
 	}
 
 	@ExceptionHandler(Exception.class)
