@@ -23,7 +23,7 @@ pipeline {
 
         stage("Checkout from SCM") {
                steps {
-                   git branch: 'orderhist', credentialsId: 'github', url: 'https://github.com/walmart-2023-sep-ascend/Team08-OrderHistoryTracker'
+                   git branch: 'main', credentialsId: 'github', url: 'https://github.com/walmart-2023-sep-ascend/Team08-OrderHistoryTracker'
                }
         }
 
