@@ -49,7 +49,7 @@ spec:
     spec:
       containers:
       - name: ordernotification-container
-        image: shyam1224/ordernotification_dev
+        image: anarayanan38/ordernotification-v2
         ports:
         - containerPort: 9704
         env:
