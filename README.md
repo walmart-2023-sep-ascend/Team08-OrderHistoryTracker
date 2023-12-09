@@ -14,7 +14,7 @@ Before you begin, ensure you have the following installed:
 
 Follow these steps to set up and run the project:
 
-## Clone the repository:
+## Commands
 
    ```bash
    git clone https://github.com/walmart-2023-sep-ascend/Team08-OrderHistoryTracker.git
