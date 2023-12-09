@@ -1,21 +1,14 @@
-#Eureka Client Details 
-eureka:
- client:
-   register-with-eureka: true
-   fetch-registry : true
-   service-url:
-     defaultZone: http://34.125.137.138:8761/
 #Server Configuration    
 server:
   port: 9700
-# App and DB Configuration   
+# App  Configuration   
 spring:     
   application:
    name: ORDER-HISTROY  
  #Service Config   
 capstone:
   orderservice:
-           url: https://ascend-team08.free.beeceptor.com/order/     
+           url: ${ORDER_URI}   
   cartservice:
-          url: https://ascend-team08.free.beeceptor.com/cart/                 
+          url: ${CART_URI}              
          
