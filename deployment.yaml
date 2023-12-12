@@ -126,9 +126,14 @@ spec:
     spec:
       containers:
       - name: orderhistory-container
-        image: sathishkph/order-history-tracker:latest
+        image: sathishkph/order-history-tracker:l1
         ports:
         - containerPort: 9700
+        env:
+        - name: CART_URI
+          value: "https://ascend-team08.free.beeceptor.com/cart/"
+        - name: ORDER_URI
+          value: "https://ascend-team08.free.beeceptor.com/order/"
 
 ---
 apiVersion: v1
@@ -140,6 +145,6 @@ spec:
     app: orderhistory
   ports:
     - protocol: TCP
-      port: 80
+      port: 9700
       targetPort: 9700
   type: LoadBalancer
