@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: frontend-container
-        image: sathishkph/frontend-app:f1
+        image: sathishkph/frontend-app:v1
         ports:
         - containerPort: 3000
 
