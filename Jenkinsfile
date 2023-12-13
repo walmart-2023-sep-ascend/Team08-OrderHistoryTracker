@@ -29,12 +29,12 @@ pipeline {
 
        stage("Build Application") {
               steps {
-                  sh "mvn clean package"  
+                  sh "mvn clean package -DCART_URI="https://ascend-team08.free.beeceptor.com/cart/"  -DORDER_URI="https://ascend-team08.free.beeceptor.com/order/""  
               }
        }   
        stage("Test Application") {
               steps{
-                 sh "mvn test"
+                 sh "mvn test -DCART_URI="https://ascend-team08.free.beeceptor.com/cart/"  -DORDER_URI="https://ascend-team08.free.beeceptor.com/order/""
               }
       }
         stage("SonarQube Analysis") {
