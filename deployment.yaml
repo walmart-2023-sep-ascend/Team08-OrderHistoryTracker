@@ -131,9 +131,9 @@ spec:
         - containerPort: 9700
         env:
         - name: CART_URI
-          value: "https://ascend-team08.free.beeceptor.com/cart/"
+          value: "http://34.95.253.110:9200/cart/"
         - name: ORDER_URI
-          value: "https://ascend-team08.free.beeceptor.com/order/"
+          value: "http://34.95.253.110:9500/order/"
 
 ---
 apiVersion: v1
