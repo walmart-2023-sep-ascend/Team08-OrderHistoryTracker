@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: frontend-container
-        image: sathishkph/frontend-app:v1
+        image: sathishkph/frontend-app:b1
         ports:
         - containerPort: 3000
 
@@ -126,7 +126,7 @@ spec:
     spec:
       containers:
       - name: orderhistory-container
-        image: sathishkph/order-history-tracker:l1
+        image: sathishkph/order-history-tracker:b1
         ports:
         - containerPort: 9700
         env:
@@ -148,3 +148,40 @@ spec:
       port: 9700
       targetPort: 9700
   type: LoadBalancer
+
+  ---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: supportticket-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: supportticket
+  template:
+    metadata:
+      labels:
+        app: supportticket
+    spec:
+      containers:
+      - name: supportticket-container
+        image: anarayanan38/support-service
+        ports:
+        - containerPort: 9701
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: supportticket-service
+spec:
+  selector:
+    app: supportticket
+  ports:
+    - protocol: TCP
+      port: 9701
+      targetPort: 9300
+  type: LoadBalancer
+
